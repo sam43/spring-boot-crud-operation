@@ -1,9 +1,9 @@
 package com.javatpoint.service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.javatpoint.repository.BookRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.javatpoint.model.Books;
@@ -12,16 +12,14 @@ import com.javatpoint.repository.BooksRepository;
 //defining the business logic
 @Service
 public class BooksService {
-
     @Autowired
-    BookRepositoryImpl booksRepository;
-
-    //BooksRepository booksRepository;
-    //BooksRepositoryImpl booksRepository;
+    BooksRepository booksRepository;
 
     //getting all books record by using the method findaAll() of CrudRepository
     public List<Books> getAllBooks() {
-        return (List<Books>) booksRepository.findAll();
+        List<Books> books = new ArrayList<>();
+        booksRepository.findAll().forEach(books1 -> books.add(books1));
+        return books;
     }
 
     //getting a specific record by using the method findById() of CrudRepository
@@ -44,9 +42,6 @@ public class BooksService {
         booksRepository.save(books);
     }
 
-    // get filtered book list
-
-    public void getFilteredBooksBy(int minPrice, int maxPrice) {
-        booksRepository.filteredBooks(minPrice, maxPrice);
-    }
+    // Query params testing
+    public int bookId(int id) { return booksRepository.findById(id).get().getBookid(); }
 }

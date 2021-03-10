@@ -13,10 +13,10 @@ public class BookRepositoryImpl implements BooksRepository {
     BooksRepository booksRepository;
 
 
-    @Override
+/*    @Override
     public void filteredBooks(int minPrice, int maxPrice) {
 
-    }
+    }*/
 
     @Override
     public <S extends Books> S save(S s) {
@@ -40,9 +40,7 @@ public class BookRepositoryImpl implements BooksRepository {
 
     @Override
     public Iterable<Books> findAll() {
-        List<Books> books = new ArrayList<>();
-        booksRepository.findAll().forEach(books::add);
-        return books;
+        return null;
     }
 
     @Override

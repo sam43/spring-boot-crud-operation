@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.javatpoint.model.Books;
 
 public interface BooksRepository extends CrudRepository<Books, Integer> {
-    void filteredBooks(int minPrice, int maxPrice);
+    //void filteredBooks(int minPrice, int maxPrice);
 }
